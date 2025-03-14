@@ -42,24 +42,34 @@ def calc_media(lista):
 
 
 def calc_media_lista(lista, ultimo):
-    auxiliar = 0
-    print(f"Numero dado por el usuario: {ultimo}")
-    lista_nueva = []
-    # print(f"LISTA NUEVA: {lista_nueva}")
+    try:
+        if ultimo > len(lista):
+            # Si es mayor lo que pide, que imprima toda la lista
 
-    for i in range(0, ultimo):
-        # Agrega los ultimos numeros según el numero ingresado por el usuario
-        lista_nueva.append(lista.pop())
-        # Quita el ultimo item y lo agrega a lista_nueva
+            ultimo = len(lista)
 
-    print(f"LISTA NUEVA: {lista_nueva}")
+        auxiliar = 0
+        # Para guardar la suma total de los items de la lista
+        # print(f"Numero dado por el usuario: {ultimo}")
+        lista_nueva = []
+        # print(f"LISTA NUEVA: {lista_nueva}")
 
-    # Itero la longitud de la lista_nueva y sumo los items
-    # en base a eso hago la media
-    for i in range(0, len(lista_nueva)):
-        auxiliar += lista_nueva[i]
-    print(f"SUMA TOTAL: {auxiliar}")
-    return auxiliar / len(lista_nueva)
+        for i in range(0, ultimo):
+            # Agrega los ultimos numeros según el numero ingresado por el usuario
+            lista_nueva.append(lista.pop())
+            # Quita el ultimo item y lo agrega a lista_nueva
+
+        print(f"LISTA NUEVA: {lista_nueva}")
+
+        # Itero la longitud de la lista_nueva y sumo los items
+        # en base a eso hago la media
+        for i in range(0, len(lista_nueva)):
+            auxiliar += lista_nueva[i]
+        print(f"SUMA TOTAL: {auxiliar}")
+        return auxiliar / len(lista_nueva)
+
+    except Exception as err:
+        print(err)
 
 
 def resumen(lista, media, RESULTADO):
@@ -85,7 +95,7 @@ while True:
             # print(LISTA_NUMEROS[ultimas_pos-1:])
 
             break
-
+        # ELSE
         NUMERO_ITERACIONES += 1
         RESULTADO += numero
         LISTA_NUMEROS.append(numero)
